@@ -1,0 +1,16 @@
+{
+  "name": "movieflow",
+  "version": "1.0.0",
+  "description": "This is backend for movie booking app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "start": "nodemon index.js"
+  },
+  "author": "Deepak Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
