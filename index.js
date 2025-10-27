@@ -4,6 +4,7 @@ const app = express(); //app is a object which return express() function. but if
 const dotenv = require("dotenv");
 dotenv.config();
 const PORT = process.env.PORT || 3000;
+const connection = require("./db.js");
 
 app.use("/home", (req, res) => {
   return res.status(200).json({
@@ -13,4 +14,5 @@ app.use("/home", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server is running on port-${PORT}`);
+  connection();
 });
