@@ -1,2 +1,36 @@
-node_modules,
+# Node modules
+node_modules/
+
+# Environment variables
 .env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# Temporary files
+tmp/
+temp/
+
+# Editor settings
+.vscode/
+.idea/
+
+# Optional: local database or uploads (if any)
+data/
+uploads/
+
+# Dependency lock for optional package managers
+pnpm-lock.yaml
