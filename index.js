@@ -1,15 +1,19 @@
 const express = require("express");
-const app = express(); //app is a object which return express() function. but if you check the typeof app it will show function.
-
 const dotenv = require("dotenv");
-dotenv.config();
-const PORT = process.env.PORT || 3000;
 const connection = require("./db.js");
+const movie = require("./route/movie.routes.js");
+
+dotenv.config();
+
+const app = express();
+app.use(express.json()); // ✅ Middleware to parse JSON
+
+const PORT = process.env.PORT || 3000;
+
+movie(app);
 
 app.use("/home", (req, res) => {
-  return res.status(200).json({
-    message: "route testing",
-  });
+  res.status(200).json({ message: "route testing" });
 });
 
 app.listen(PORT, () => {
