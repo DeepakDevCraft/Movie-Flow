@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connection = require("./db.js");
 const movie = require("./route/movie.routes.js");
+const listMovie = require("./route/list.movie.js");
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ app.use(express.json()); // ✅ Middleware to parse JSON
 const PORT = process.env.PORT || 3000;
 
 movie(app);
+listMovie(app);
 
 app.use("/home", (req, res) => {
   res.status(200).json({ message: "route testing" });
