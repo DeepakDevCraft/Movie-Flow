@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 const connectDB = () => {
   mongoose
-    .connect("mongodb://localhost:27017/Movie")
+    .connect("mongodb://127.0.0.1:27017/MovieFlow")
     .then(() => {
       console.log("✅ Connected to MongoDB successfully!");
     })
-    .catch(() => {
+    .catch((err) => {
       console.error("❌ Error connecting to MongoDB:", err);
     });
 };
