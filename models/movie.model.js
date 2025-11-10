@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-
 const { Schema } = mongoose;
 
-//A Schema is like a blueprint for a MongoDB collection. It defines the structure of documents, specifying what fields they contain and the type of data each field holds.
+// A Schema is like a blueprint for a MongoDB collection.
+// It defines the structure of documents, specifying what fields they contain and the type of data each field holds.
 
 const movieSchema = new Schema(
   {
@@ -14,17 +14,14 @@ const movieSchema = new Schema(
       type: String,
       required: true,
     },
-
     casts: {
-      name: [String],
+      type: [String],
       required: true,
     },
-
     director: {
-      name: [String],
+      type: [String],
       required: true,
     },
-
     releasedDate: {
       type: String,
     },
@@ -37,12 +34,13 @@ const movieSchema = new Schema(
     },
     language: {
       type: [String],
-      default: "ENGLISH",
+      default: ["ENGLISH"],
     },
   },
   { timestamps: true }
 );
 
-const Movie = mongoose.model(Movie, movieSchema); // creating a model
+// Creating and exporting the model
+const Movie = mongoose.model("Movie", movieSchema);
 
-module.exports = Movie; //returning model
+module.exports = Movie;
