@@ -1,3 +1,4 @@
+const { Model } = require("mongoose");
 const Movie = require("../models/movie.model.js");
 
 const createMovie = async (req, res) => {
@@ -23,4 +24,62 @@ const createMovie = async (req, res) => {
   }
 };
 
-module.exports = createMovie;
+const getMovieById = async (req, res) => {
+  try {
+    const { id } = req.params; // extract id from route params
+
+    const movie = await Movie.findById(id);
+
+    if (!movie) {
+      return res.status(404).json({
+        success: false,
+        error: "Movie not found",
+        response: {},
+        message: "No movie found with the given ID",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      error: {},
+      response: movie,
+      message: "Movie fetched successfully",
+    });
+  } catch (err) {
+    console.error("❌ Error fetching movie by ID:", err);
+    return res.status(500).json({
+      success: false,
+      error: err.message,
+      response: {},
+      message: "Something went wrong while fetching the movie",
+    });
+  }
+};
+
+// list all movies
+
+const listMovieController = async (req, res) => {
+  try {
+    const movies = await Movie.find();
+
+    return res.status(200).json({
+      success: true,
+      error: {},
+      response: movies,
+      message: "Fetched all movies successfully",
+    });
+  } catch (err) {
+    console.error("❌ Error fetching movies:", err);
+
+    return res.status(500).json({
+      success: false,
+      error: err.message,
+      response: [],
+      message: "Something went wrong while fetching movies",
+    });
+  }
+};
+
+module.exports = { createMovie, listMovieController, getMovieById };
+
+//module.exports = { createMovie, listMovieController };
