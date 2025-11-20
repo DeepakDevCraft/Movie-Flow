@@ -83,8 +83,9 @@ const listMovieController = async (req, res) => {
 const deleteMovieById = async (req, res) => {
   try {
     const { id } = req.params; // extract id from route params
+    console.log("movie deleted", id);
 
-    const movie = await Movie.delete(id);
+    const movie = await Movie.deleteOne({ __id: id });
 
     if (!movie) {
       return res.status(404).json({
