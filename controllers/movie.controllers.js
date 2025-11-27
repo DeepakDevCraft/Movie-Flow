@@ -117,5 +117,3 @@ module.exports = {
   getMovieById,
   deleteMovieById,
 };
-
-//module.exports = { createMovie, listMovieController };
